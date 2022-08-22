@@ -1,4 +1,6 @@
 package com.example.routesuggesterapp.data.repo
 
-class ResponsiveRouteInfo {
+import com.example.routesuggesterapp.data.network.RouteInfo
+
+class ResponsiveRouteInfo() : RouteInfo() {
 }
