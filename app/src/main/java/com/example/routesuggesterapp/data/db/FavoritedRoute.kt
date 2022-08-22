@@ -1,4 +1,10 @@
 package com.example.routesuggesterapp.data.db
 
-class FavoritedRoute {
-}
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
+data class FavoritedRoute (
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0
+)
