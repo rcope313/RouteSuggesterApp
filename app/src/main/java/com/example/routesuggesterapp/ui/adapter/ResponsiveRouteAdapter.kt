@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.routesuggesterapp.data.repo.ResponsiveRouteInfo
+import com.example.routesuggesterapp.data.repo.ResponsiveRoute
 import com.example.routesuggesterapp.databinding.FragmentRouteListBinding
 
-class ResponsiveRouteAdapter(private val onItemClick: (ResponsiveRouteInfo) -> Unit)
-    : ListAdapter<ResponsiveRouteInfo, ResponsiveRouteAdapter.RouteViewHolder>(DiffCallback) {
+class ResponsiveRouteAdapter(private val onItemClick: (ResponsiveRoute) -> Unit)
+    : ListAdapter<ResponsiveRoute, ResponsiveRouteAdapter.RouteViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RouteViewHolder {
         return RouteViewHolder(
@@ -32,7 +32,7 @@ class ResponsiveRouteAdapter(private val onItemClick: (ResponsiveRouteInfo) -> U
     class RouteViewHolder(private var binding: FragmentRouteListBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(responsiveRouteInfo: ResponsiveRouteInfo) {
+        fun bind(responsiveRoute: ResponsiveRoute) {
             binding.apply {
                 TODO()
             }
@@ -40,12 +40,12 @@ class ResponsiveRouteAdapter(private val onItemClick: (ResponsiveRouteInfo) -> U
     }
 
     companion object {
-        private val DiffCallback = object : DiffUtil.ItemCallback<ResponsiveRouteInfo>() {
-            override fun areItemsTheSame(oldItem: ResponsiveRouteInfo, newItem: ResponsiveRouteInfo): Boolean {
+        private val DiffCallback = object : DiffUtil.ItemCallback<ResponsiveRoute>() {
+            override fun areItemsTheSame(oldItem: ResponsiveRoute, newItem: ResponsiveRoute): Boolean {
                 return oldItem === newItem
             }
 
-            override fun areContentsTheSame(oldItem: ResponsiveRouteInfo, newItem: ResponsiveRouteInfo): Boolean {
+            override fun areContentsTheSame(oldItem: ResponsiveRoute, newItem: ResponsiveRoute): Boolean {
                 TODO()
             }
         }
