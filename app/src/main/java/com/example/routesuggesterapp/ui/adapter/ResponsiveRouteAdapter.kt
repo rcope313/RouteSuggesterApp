@@ -6,14 +6,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.routesuggesterapp.data.repo.ResponsiveRouteInfo
-import com.example.routesuggesterapp.databinding.FragmentRouteInfoListBinding
+import com.example.routesuggesterapp.databinding.FragmentRouteListBinding
 
-class ResponsiveRouteInfoAdapter(private val onItemClick: (ResponsiveRouteInfo) -> Unit)
-    : ListAdapter<ResponsiveRouteInfo, ResponsiveRouteInfoAdapter.RouteInfoViewHolder>(DiffCallback) {
+class ResponsiveRouteAdapter(private val onItemClick: (ResponsiveRouteInfo) -> Unit)
+    : ListAdapter<ResponsiveRouteInfo, ResponsiveRouteAdapter.RouteViewHolder>(DiffCallback) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RouteInfoViewHolder {
-        return RouteInfoViewHolder(
-            FragmentRouteInfoListBinding.inflate(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RouteViewHolder {
+        return RouteViewHolder(
+            FragmentRouteListBinding.inflate(
                 LayoutInflater.from(
                     parent.context
                 )
@@ -21,7 +21,7 @@ class ResponsiveRouteInfoAdapter(private val onItemClick: (ResponsiveRouteInfo) 
         )
     }
 
-    override fun onBindViewHolder(holder: RouteInfoViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RouteViewHolder, position: Int) {
         val current = getItem(position)
         holder.itemView.setOnClickListener {
             onItemClick(current)
@@ -29,7 +29,7 @@ class ResponsiveRouteInfoAdapter(private val onItemClick: (ResponsiveRouteInfo) 
         holder.bind(current)
     }
 
-    class RouteInfoViewHolder(private var binding: FragmentRouteInfoListBinding) :
+    class RouteViewHolder(private var binding: FragmentRouteListBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(responsiveRouteInfo: ResponsiveRouteInfo) {
