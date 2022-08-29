@@ -18,10 +18,10 @@ private val retrofit = Retrofit.Builder()
 interface RouteApiService {
 
     @POST("search")
-    suspend fun getRoutesBySearchCriteria() : List<Route>
+    suspend fun getRoutesBySearchCriteria(body: RoutesSearchCriteria) : List<Route>
 
     @POST("search/suggest_by_weather")
-    suspend fun getRoutesBySearchCriteriaAndWeather() : List<Route>
+    suspend fun getRoutesBySearchCriteriaAndWeather(body: RoutesSearchCriteria) : List<Route>
 
 }
 
