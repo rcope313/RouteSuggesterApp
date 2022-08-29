@@ -22,7 +22,7 @@ interface RouteApiService {
 
     @POST("search/suggest_by_weather")
     suspend fun getRoutesBySearchCriteriaAndWeather() : List<Route>
-    
+
 }
 
 object RouteApi {
