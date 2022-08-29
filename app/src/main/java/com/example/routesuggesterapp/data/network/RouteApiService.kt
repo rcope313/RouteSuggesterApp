@@ -14,11 +14,11 @@ private val retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)
     .build()
 
-interface RouteInfoApiService {
+interface RouteApiService {
 
 }
 
-object RouteInfoApi {
-    val retrofitService : RouteInfoApiService by lazy {
-        retrofit.create(RouteInfoApiService::class.java) }
+object RouteApi {
+    val retrofitService : RouteApiService by lazy {
+        retrofit.create(RouteApiService::class.java) }
 }
