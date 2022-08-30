@@ -6,5 +6,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class FavoritedRoute (
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 0
+    val id: Int,
+    val routeId: Int,
+    val isFavorited: Boolean = true
 )
