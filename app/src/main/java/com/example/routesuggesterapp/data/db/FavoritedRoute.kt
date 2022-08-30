@@ -8,5 +8,4 @@ data class FavoritedRoute (
     @PrimaryKey(autoGenerate = true)
     val id: Int,
     val routeId: Int,
-    val isFavorited: Boolean = true
 )
