@@ -19,7 +19,7 @@ abstract class FavoritedRouteDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     FavoritedRouteDatabase::class.java,
-                    "item_database"
+                    "favorited_route_database"
                 )
                     .fallbackToDestructiveMigration()
                     .build()
