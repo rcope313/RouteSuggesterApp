@@ -17,9 +17,10 @@ class ResponsiveRouteRepo(
         val listOfResponsiveRoutes = mutableListOf<ResponsiveRoute>()
 
         routes.forEach {
-            when (isRouteFavorited(it)) {
+            if (isRouteFavorited(it)) {
                 listOfResponsiveRoutes.add(ResponsiveRoute(true, it))
-                else -> listOfResponsiveRoutes.add(ResponsiveRoute(false, it))
+            } else {
+                listOfResponsiveRoutes.add(ResponsiveRoute(false, it))
             }
         }
         return listOfResponsiveRoutes
@@ -30,9 +31,10 @@ class ResponsiveRouteRepo(
         val listOfResponsiveRoutes = mutableListOf<ResponsiveRoute>()
 
         routes.forEach {
-            when (isRouteFavorited(it)) {
+            if (isRouteFavorited(it)) {
                 listOfResponsiveRoutes.add(ResponsiveRoute(true, it))
-                else -> listOfResponsiveRoutes.add(ResponsiveRoute(false, it))
+            } else {
+                listOfResponsiveRoutes.add(ResponsiveRoute(false, it))
             }
         }
         return listOfResponsiveRoutes

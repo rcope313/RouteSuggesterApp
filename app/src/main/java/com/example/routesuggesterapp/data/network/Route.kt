@@ -1,6 +1,6 @@
 package com.example.routesuggesterapp.data.network
 
-open class Route(
+data class Route(
     val id: Int,
     val routeName: String,
     val mountainName: String,
