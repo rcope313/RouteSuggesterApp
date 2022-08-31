@@ -26,6 +26,6 @@ interface RouteApiService {
 }
 
 object RouteApi {
-    val retrofitService : RouteApiService by lazy {
+    val routeApiService : RouteApiService by lazy {
         retrofit.create(RouteApiService::class.java) }
 }
