@@ -30,23 +30,6 @@ class ResponsiveRouteRepoTest {
 
     @Before
     fun initData() {
-        longsPeakCriteria = RoutesSearchCriteria(
-            Optional.empty(),
-            Optional.of("Longs Peak"),
-            Optional.empty(),
-            Optional.empty(),
-            Optional.empty(),
-            Optional.empty(),
-            Optional.empty(),
-            Optional.empty(),
-            Optional.empty(),
-            Optional.empty(),
-            Optional.empty(),
-            Optional.empty(),
-            Optional.empty(),
-            Optional.empty()
-        )
-
         keyHoleRoute = Route(
             1,
             "Keyhole Route",
@@ -91,11 +74,18 @@ class ResponsiveRouteRepoTest {
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    fun itGetsResponsiveRoutesBySearchCriteria() = runTest {
-        api = mock()
-        whenever(service.getRoutesBySearchCriteria(longsPeakCriteria)) doReturn listOf()
-        whenever(service.getRoutesBySearchCriteriaAndWeather(longsPeakCriteria)) doReturn listOf()
+    fun itBuildsAnEmptyListOfResponsiveRoutes() = runTest {
+        dao = mock()
+        repo = ResponsiveRouteRepo(dao, RouteApi)
+        assertEquals(
+            repo.buildListOfResponsiveRoutes(listOf()),
+            listOf<ResponsiveRoute>()
+        )
+    }
 
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @Test
+    fun itBuildsAListOfResponsiveRoutes() = runTest {
         dao = mock()
         whenever(dao.getRouteId(keyHoleRoute.id)) doReturn flow {
             emit(keyHoleRoute.id)
@@ -104,13 +94,11 @@ class ResponsiveRouteRepoTest {
 
         repo = ResponsiveRouteRepo(dao, RouteApi)
         assertEquals(
-            repo.getResponsiveRoutesBySearchCriteria(longsPeakCriteria),
+            repo.buildListOfResponsiveRoutes(listOf(keyHoleRoute, loftRoute)),
             listOf(keyHoleRouteFavorited, loftRouteNotFavorited)
         )
     }
 
-    @OptIn(ExperimentalCoroutinesApi::class)
-    @Test
-    fun itGetsResponsiveRoutesBySearchCriteriaAndWeather() = runTest {
-    }
+
+
 }

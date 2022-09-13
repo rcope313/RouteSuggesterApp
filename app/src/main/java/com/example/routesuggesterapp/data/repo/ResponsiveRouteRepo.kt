@@ -1,5 +1,6 @@
 package com.example.routesuggesterapp.data.repo
 
+import androidx.annotation.VisibleForTesting
 import com.example.routesuggesterapp.data.db.FavoritedRoute
 import com.example.routesuggesterapp.data.db.FavoritedRouteDao
 import com.example.routesuggesterapp.data.network.Route
@@ -19,7 +20,8 @@ class ResponsiveRouteRepo(private val dao: FavoritedRouteDao, private val api: R
         return buildListOfResponsiveRoutes(routes)
     }
 
-    private suspend fun buildListOfResponsiveRoutes(routes: List<Route>) : List<ResponsiveRoute> {
+    @VisibleForTesting
+    suspend fun buildListOfResponsiveRoutes(routes: List<Route>) : List<ResponsiveRoute> {
         val listOfResponsiveRoutes = mutableListOf<ResponsiveRoute>()
 
         routes.forEach {
