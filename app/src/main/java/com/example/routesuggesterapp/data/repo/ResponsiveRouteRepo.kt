@@ -11,20 +11,15 @@ class ResponsiveRouteRepo(private val dao: FavoritedRouteDao, private val api: R
 
     suspend fun getResponsiveRoutesBySearchCriteria(criteria: RoutesSearchCriteria) : List<ResponsiveRoute> {
         val routes = api.service.getRoutesBySearchCriteria(criteria)
-        val listOfResponsiveRoutes = mutableListOf<ResponsiveRoute>()
-
-        routes.forEach {
-            if (isRouteFavorited(it)) {
-                listOfResponsiveRoutes.add(ResponsiveRoute(true, it))
-            } else {
-                listOfResponsiveRoutes.add(ResponsiveRoute(false, it))
-            }
-        }
-        return listOfResponsiveRoutes
+        return buildListOfResponsiveRoutes(routes)
     }
 
     suspend fun getResponsiveRoutesBySearchCriteriaAndWeather(criteria: RoutesSearchCriteria) : List<ResponsiveRoute> {
         val routes = api.service.getRoutesBySearchCriteriaAndWeather(criteria)
+        return buildListOfResponsiveRoutes(routes)
+    }
+
+    private suspend fun buildListOfResponsiveRoutes(routes: List<Route>) : List<ResponsiveRoute> {
         val listOfResponsiveRoutes = mutableListOf<ResponsiveRoute>()
 
         routes.forEach {
@@ -38,12 +33,12 @@ class ResponsiveRouteRepo(private val dao: FavoritedRouteDao, private val api: R
     }
 
     //verify mockito
-    suspend fun favoriteRoute(route: Route) {
+    private suspend fun favoriteRoute(route: Route) {
         dao.insert(FavoritedRoute(routeId = route.id))
     }
 
     //verify mockito
-    suspend fun unfavoriteRoute(route: Route) {
+    private suspend fun unfavoriteRoute(route: Route) {
         dao.delete(FavoritedRoute(routeId = route.id))
     }
 
