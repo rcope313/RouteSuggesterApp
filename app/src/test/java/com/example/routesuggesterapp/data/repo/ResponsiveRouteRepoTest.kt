@@ -22,9 +22,7 @@ import java.util.*
 
 class ResponsiveRouteRepoTest {
     private lateinit var dao: FavoritedRouteDao
-    private lateinit var api: RouteApiService
     private lateinit var repo: ResponsiveRouteRepo
-    private lateinit var longsPeakCriteria: RoutesSearchCriteria
     private lateinit var keyHoleRoute: Route
     private lateinit var loftRoute: Route
     private lateinit var keyHoleRouteFavorited: ResponsiveRoute
