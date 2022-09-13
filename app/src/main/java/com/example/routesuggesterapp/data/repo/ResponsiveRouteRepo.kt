@@ -34,13 +34,13 @@ class ResponsiveRouteRepo(private val dao: FavoritedRouteDao, private val api: R
         return listOfResponsiveRoutes
     }
 
-    //verify mockito
-    private suspend fun favoriteRoute(route: Route) {
+    @VisibleForTesting
+    suspend fun favoriteRoute(route: Route) {
         dao.insert(FavoritedRoute(routeId = route.id))
     }
 
-    //verify mockito
-    private suspend fun unfavoriteRoute(route: Route) {
+    @VisibleForTesting
+    suspend fun unfavoriteRoute(route: Route) {
         dao.delete(FavoritedRoute(routeId = route.id))
     }
 

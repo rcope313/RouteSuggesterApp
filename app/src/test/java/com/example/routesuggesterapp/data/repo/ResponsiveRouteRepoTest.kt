@@ -1,5 +1,6 @@
 package com.example.routesuggesterapp.data.repo
 
+import com.example.routesuggesterapp.data.db.FavoritedRoute
 import com.example.routesuggesterapp.data.db.FavoritedRouteDao
 import com.example.routesuggesterapp.data.network.Route
 import com.example.routesuggesterapp.data.network.RouteApi
@@ -15,6 +16,7 @@ import org.junit.Before
 import org.junit.Test
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
+import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
 import java.util.*
 
@@ -99,6 +101,21 @@ class ResponsiveRouteRepoTest {
         )
     }
 
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @Test
+    fun itFavoritesRouteByDao() = runTest{
+        dao = mock()
+        repo = ResponsiveRouteRepo(dao, RouteApi)
+        repo.favoriteRoute(keyHoleRoute)
+        verify(dao).insert(FavoritedRoute(routeId = keyHoleRoute.id))
+    }
 
-
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @Test
+    fun itUnFavoritesRouteByDao() = runTest {
+        dao = mock()
+        repo = ResponsiveRouteRepo(dao, RouteApi)
+        repo.unfavoriteRoute(keyHoleRoute)
+        verify(dao).delete(FavoritedRoute(routeId = keyHoleRoute.id))
+    }
 }
