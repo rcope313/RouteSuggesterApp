@@ -21,11 +21,11 @@ interface RouteApiService {
     suspend fun getRoutesBySearchCriteria(body: RoutesSearchCriteria) : List<Route>
 
     @POST("search/suggest_by_weather")
-    suspend fun getRoutesBySearchCriteriaAndWeather(body: RoutesSearchCriteria) : List<Route>
+    suspend fun getRoutesBySearchCriteriaAndWeather(criteria: RoutesSearchCriteria) : List<Route>
 
 }
 
 object RouteApi {
-    val retrofitService : RouteApiService by lazy {
+    val service : RouteApiService by lazy {
         retrofit.create(RouteApiService::class.java) }
 }
