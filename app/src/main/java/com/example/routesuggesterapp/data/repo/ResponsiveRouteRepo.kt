@@ -5,18 +5,19 @@ import com.example.routesuggesterapp.data.db.FavoritedRoute
 import com.example.routesuggesterapp.data.db.FavoritedRouteDao
 import com.example.routesuggesterapp.data.network.Route
 import com.example.routesuggesterapp.data.network.RouteApi
+import com.example.routesuggesterapp.data.network.RouteApiService
 import com.example.routesuggesterapp.data.network.RoutesSearchCriteria
 import kotlinx.coroutines.flow.single
 
-class ResponsiveRouteRepo(private val dao: FavoritedRouteDao, private val api: RouteApi) {
+class ResponsiveRouteRepo(private val dao: FavoritedRouteDao, private val api: RouteApiService) {
 
     suspend fun getResponsiveRoutesBySearchCriteria(criteria: RoutesSearchCriteria) : List<ResponsiveRoute> {
-        val routes = api.service.getRoutesBySearchCriteria(criteria)
+        val routes = api.getRoutesBySearchCriteria(criteria)
         return buildListOfResponsiveRoutes(routes)
     }
 
     suspend fun getResponsiveRoutesBySearchCriteriaAndWeather(criteria: RoutesSearchCriteria) : List<ResponsiveRoute> {
-        val routes = api.service.getRoutesBySearchCriteriaAndWeather(criteria)
+        val routes = api.getRoutesBySearchCriteriaAndWeather(criteria)
         return buildListOfResponsiveRoutes(routes)
     }
 

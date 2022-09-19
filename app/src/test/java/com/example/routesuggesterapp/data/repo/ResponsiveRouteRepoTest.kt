@@ -22,6 +22,7 @@ import java.util.*
 
 class ResponsiveRouteRepoTest {
     private lateinit var dao: FavoritedRouteDao
+    private lateinit var apiService: RouteApiService
     private lateinit var repo: ResponsiveRouteRepo
     private lateinit var keyHoleRoute: Route
     private lateinit var loftRoute: Route
@@ -70,13 +71,15 @@ class ResponsiveRouteRepoTest {
         )
         keyHoleRouteFavorited = ResponsiveRoute(true, keyHoleRoute)
         loftRouteNotFavorited = ResponsiveRoute(false, loftRoute)
+
+        dao = mock()
+        apiService = mock()
+        repo = ResponsiveRouteRepo(dao, apiService)
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun itBuildsAnEmptyListOfResponsiveRoutes() = runTest {
-        dao = mock()
-        repo = ResponsiveRouteRepo(dao, RouteApi)
         assertEquals(
             repo.buildListOfResponsiveRoutes(listOf()),
             listOf<ResponsiveRoute>()
@@ -86,13 +89,11 @@ class ResponsiveRouteRepoTest {
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun itBuildsAListOfResponsiveRoutes() = runTest {
-        dao = mock()
         whenever(dao.getRouteId(keyHoleRoute.id)) doReturn flow {
             emit(keyHoleRoute.id)
         }
         whenever(dao.getRouteId(loftRoute.id)) doReturn emptyFlow()
 
-        repo = ResponsiveRouteRepo(dao, RouteApi)
         assertEquals(
             repo.buildListOfResponsiveRoutes(listOf(keyHoleRoute, loftRoute)),
             listOf(keyHoleRouteFavorited, loftRouteNotFavorited)
@@ -102,8 +103,6 @@ class ResponsiveRouteRepoTest {
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun itFavoritesRouteByDao() = runTest{
-        dao = mock()
-        repo = ResponsiveRouteRepo(dao, RouteApi)
         repo.favoriteRoute(keyHoleRoute)
         verify(dao).insert(FavoritedRoute(routeId = keyHoleRoute.id))
     }
@@ -111,8 +110,6 @@ class ResponsiveRouteRepoTest {
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun itUnFavoritesRouteByDao() = runTest {
-        dao = mock()
-        repo = ResponsiveRouteRepo(dao, RouteApi)
         repo.unfavoriteRoute(keyHoleRoute)
         verify(dao).delete(FavoritedRoute(routeId = keyHoleRoute.id))
     }
