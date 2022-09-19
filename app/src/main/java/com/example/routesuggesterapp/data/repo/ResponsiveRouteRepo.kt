@@ -4,7 +4,6 @@ import androidx.annotation.VisibleForTesting
 import com.example.routesuggesterapp.data.db.FavoritedRoute
 import com.example.routesuggesterapp.data.db.FavoritedRouteDao
 import com.example.routesuggesterapp.data.network.Route
-import com.example.routesuggesterapp.data.network.RouteApi
 import com.example.routesuggesterapp.data.network.RouteApiService
 import com.example.routesuggesterapp.data.network.RoutesSearchCriteria
 import kotlinx.coroutines.flow.single

@@ -24,7 +24,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun providesMoshi(kotlinJsonAdapterFactory: KotlinJsonAdapterFactory) : Moshi =
+    fun providesMoshi() : Moshi =
         Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
             .build()

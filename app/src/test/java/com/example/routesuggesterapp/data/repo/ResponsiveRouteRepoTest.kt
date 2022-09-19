@@ -3,10 +3,7 @@ package com.example.routesuggesterapp.data.repo
 import com.example.routesuggesterapp.data.db.FavoritedRoute
 import com.example.routesuggesterapp.data.db.FavoritedRouteDao
 import com.example.routesuggesterapp.data.network.Route
-import com.example.routesuggesterapp.data.network.RouteApi
-import com.example.routesuggesterapp.data.network.RouteApi.service
 import com.example.routesuggesterapp.data.network.RouteApiService
-import com.example.routesuggesterapp.data.network.RoutesSearchCriteria
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.flow
@@ -18,7 +15,6 @@ import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
-import java.util.*
 
 class ResponsiveRouteRepoTest {
     private lateinit var dao: FavoritedRouteDao
