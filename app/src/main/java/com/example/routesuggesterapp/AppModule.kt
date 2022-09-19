@@ -20,7 +20,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-    private const val BASE_URL = "https://restcountries.eu/rest/v2/"
+    private const val BASE_URL = "a-url"
 
     @Provides
     @Singleton
@@ -54,7 +54,7 @@ object AppModule {
         Room.databaseBuilder(
         app,
         FavoritedRouteDatabase::class.java,
-        "your_db_name"
+            "favorited_route_database"
     ).build()
 
     @Singleton
