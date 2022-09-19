@@ -7,8 +7,12 @@ import com.example.routesuggesterapp.data.network.Route
 import com.example.routesuggesterapp.data.network.RouteApiService
 import com.example.routesuggesterapp.data.network.RoutesSearchCriteria
 import kotlinx.coroutines.flow.single
+import javax.inject.Inject
 
-class ResponsiveRouteRepo(private val dao: FavoritedRouteDao, private val api: RouteApiService) {
+class ResponsiveRouteRepo @Inject constructor(
+    private val dao: FavoritedRouteDao,
+    private val api: RouteApiService
+    ) {
 
     suspend fun getResponsiveRoutesBySearchCriteria(criteria: RoutesSearchCriteria) : List<ResponsiveRoute> {
         val routes = api.getRoutesBySearchCriteria(criteria)

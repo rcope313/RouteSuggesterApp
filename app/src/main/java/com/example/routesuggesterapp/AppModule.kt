@@ -1,6 +1,5 @@
 package com.example.routesuggesterapp
 
-import android.app.Application
 import android.content.Context
 import androidx.room.Room
 import com.example.routesuggesterapp.data.db.FavoritedRouteDao
@@ -13,17 +12,18 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
 @Module
-@InstallIn(Application::class)
+@InstallIn(SingletonComponent::class)
 object AppModule {
     private const val BASE_URL = "https://restcountries.eu/rest/v2/"
 
-    @Singleton
     @Provides
+    @Singleton
     fun providesMoshi() : Moshi =
         Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
