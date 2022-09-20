@@ -15,6 +15,4 @@ class ResponsiveRouteViewModel @Inject constructor(
     private val _routes = MutableLiveData<List<ResponsiveRoute>>()
     val routes: LiveData<List<ResponsiveRoute>> = _routes
 
-
-
 }
