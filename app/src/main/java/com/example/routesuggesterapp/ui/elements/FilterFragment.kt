@@ -5,18 +5,28 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.routesuggesterapp.R
+import com.example.routesuggesterapp.databinding.FragmentFilterBinding
+import com.example.routesuggesterapp.ui.viewmodel.ResponsiveRouteViewModel
+import com.google.android.material.divider.MaterialDividerItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class FilterFragment : Fragment() {
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var binding: FragmentFilterBinding
+    private val viewModel: ResponsiveRouteViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_filter, container, false)
+        binding = FragmentFilterBinding.inflate(inflater, container, false)
+        val divider = MaterialDividerItemDecoration(requireContext(), LinearLayoutManager.HORIZONTAL)
+        binding.recyclerView.addItemDecoration(divider)
+
+        return binding.root
     }
 }
