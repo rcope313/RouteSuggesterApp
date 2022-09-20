@@ -24,6 +24,14 @@ class ResponsiveRouteRepo @Inject constructor(
         return buildListOfResponsiveRoutes(routes)
     }
 
+    suspend fun favoriteRoute(route: Route) {
+        dao.insert(FavoritedRoute(routeId = route.id))
+    }
+
+    suspend fun unfavoriteRoute(route: Route) {
+        dao.delete(FavoritedRoute(routeId = route.id))
+    }
+
     @VisibleForTesting
     suspend fun buildListOfResponsiveRoutes(routes: List<Route>) : List<ResponsiveRoute> {
         val listOfResponsiveRoutes = mutableListOf<ResponsiveRoute>()
@@ -36,16 +44,6 @@ class ResponsiveRouteRepo @Inject constructor(
             }
         }
         return listOfResponsiveRoutes
-    }
-
-    @VisibleForTesting
-    suspend fun favoriteRoute(route: Route) {
-        dao.insert(FavoritedRoute(routeId = route.id))
-    }
-
-    @VisibleForTesting
-    suspend fun unfavoriteRoute(route: Route) {
-        dao.delete(FavoritedRoute(routeId = route.id))
     }
 
     private suspend fun isRouteFavorited(route: Route) : Boolean {
