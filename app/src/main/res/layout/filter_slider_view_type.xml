@@ -27,7 +27,7 @@
             app:layout_constraintStart_toStartOf="parent"
             tools:text="Filter Name" />
 
-        <com.google.android.material.slider.Slider
+        <com.google.android.material.slider.RangeSlider
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_marginTop="@string/filter_name_margin_top"
