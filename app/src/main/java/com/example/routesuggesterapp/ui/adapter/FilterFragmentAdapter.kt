@@ -4,6 +4,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.routesuggesterapp.data.repo.ResponsiveRoute
+import com.example.routesuggesterapp.databinding.FragmentRouteListBinding
 import com.example.routesuggesterapp.ui.adapter.models.FilterViewType
 import com.example.routesuggesterapp.ui.adapter.models.ViewType
 
@@ -27,6 +29,46 @@ class FilterFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             ViewType.SLIDER -> SLIDER_VAL
             ViewType.SWITCH -> SWITCH_VAL
             ViewType.TEXTFIELD -> TEXTFIELD_VAL
+        }
+    }
+
+    class ChipViewHolder(private var binding: FragmentRouteListBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(responsiveRoute: ResponsiveRoute) {
+            binding.apply {
+                TODO()
+            }
+        }
+    }
+
+    class SliderViewHolder(private var binding: FragmentRouteListBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(responsiveRoute: ResponsiveRoute) {
+            binding.apply {
+                TODO()
+            }
+        }
+    }
+
+    class SwitchViewHolder(private var binding: FragmentRouteListBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(responsiveRoute: ResponsiveRoute) {
+            binding.apply {
+                TODO()
+            }
+        }
+    }
+
+    class TextViewHolder(private var binding: FragmentRouteListBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(responsiveRoute: ResponsiveRoute) {
+            binding.apply {
+                TODO()
+            }
         }
     }
 
