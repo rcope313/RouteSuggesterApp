@@ -4,10 +4,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.routesuggesterapp.data.repo.ResponsiveRoute
+import com.example.routesuggesterapp.ui.adapter.models.FilterViewType
 
 class FilterFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private val mDiffer: AsyncListDiffer<ResponsiveRoute> = AsyncListDiffer(this, DiffCallback);
+    private val mDiffer: AsyncListDiffer<FilterViewType> = AsyncListDiffer(this, DiffCallback);
 
     override fun getItemCount() =
         mDiffer.currentList.size
@@ -21,16 +21,19 @@ class FilterFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun getItemViewType(position: Int): Int {
-        return super.getItemViewType(position)
+        when (mDiffer.currentList[position]) {
+
+        }
+
     }
 
     companion object {
-        private val DiffCallback = object : DiffUtil.ItemCallback<ResponsiveRoute>() {
-            override fun areItemsTheSame(oldItem: ResponsiveRoute, newItem: ResponsiveRoute): Boolean {
-                return oldItem === newItem
+        private val DiffCallback = object : DiffUtil.ItemCallback<FilterViewType>() {
+            override fun areItemsTheSame(oldItem: FilterViewType, newItem: FilterViewType): Boolean {
+                TODO()
             }
 
-            override fun areContentsTheSame(oldItem: ResponsiveRoute, newItem: ResponsiveRoute): Boolean {
+            override fun areContentsTheSame(oldItem: FilterViewType, newItem: FilterViewType): Boolean {
                 TODO()
             }
         }
