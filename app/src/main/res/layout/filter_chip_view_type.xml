@@ -6,7 +6,7 @@
 
     <data>
         <variable
-            name="forageable"
+            name="chipViewType"
             type="com.example.routesuggesterapp.ui.adapter.models.ChipViewType" />
     </data>
 
