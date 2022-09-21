@@ -7,14 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.routesuggesterapp.data.repo.ResponsiveRoute
 
 class FilterFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private val  mDiffer: AsyncListDiffer<ResponsiveRoute> = AsyncListDiffer(this, DiffCallback);
+    private val mDiffer: AsyncListDiffer<ResponsiveRoute> = AsyncListDiffer(this, DiffCallback);
 
     override fun getItemCount() =
         mDiffer.currentList.size
-
-    fun submitList(list: List<ResponsiveRoute>) {
-        mDiffer.submitList(list)
-    }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val user = mDiffer.currentList[position]
@@ -24,6 +20,9 @@ class FilterFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         TODO("Not yet implemented")
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return super.getItemViewType(position)
+    }
 
     companion object {
         private val DiffCallback = object : DiffUtil.ItemCallback<ResponsiveRoute>() {
