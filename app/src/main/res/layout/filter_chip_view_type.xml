@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:text=""
             android:textAppearance="?attr/textAppearanceHeadline6"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@string/filter_margin_top"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="Filter Name" />
@@ -25,8 +25,8 @@
             android:id="@+id/chipGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="@string/filter_name_margin_top"
+            android:layout_marginBottom="@string/filter_margin_bottom"
             app:layout_constraintTop_toTopOf="@id/filterName"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
@@ -37,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="Low"/>
+                android:text="@string/chip_low"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/moderate"
@@ -45,15 +45,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="Moderate"/>
+                android:text="@string/chip_moderate"/>
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/chip_3"
+                android:id="@+id/considerable"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="Moderate"/>
+                android:text="@string/considerable_chip"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/high"
@@ -61,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="High"/>
+                android:text="@string/high_chip"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/extreme"
@@ -69,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="Extreme"/>
+                android:text="@string/extreme_chip"/>
 
         </com.google.android.material.chip.ChipGroup>
 
