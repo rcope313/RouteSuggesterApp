@@ -85,7 +85,10 @@ class FilterFragmentAdapter(val builder: RoutesSearchCriteria.Builder) : Recycle
         fun bind(sliderViewType: SliderViewType) {
             binding.apply {
                 binding.sliderViewType = sliderViewType
-                //binding.executePendingsBindings()
+                rangeSlider.addOnChangeListener { slider, value, fromUser ->
+                    val values = rangeSlider.values
+                    TODO()
+                }
             }
         }
     }
