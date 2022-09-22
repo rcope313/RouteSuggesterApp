@@ -1,5 +1,6 @@
 package com.example.routesuggesterapp.ui.adapter
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -29,11 +30,12 @@ class FilterFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
         return when (viewType) {
-            CHIP_VAL -> ChipViewHolder(TODO())
-            SLIDER_VAL -> SliderViewHolder(TODO())
-            SWITCH_VAL -> SwitchViewHolder(TODO())
-            TEXTFIELD_VAL -> TextFieldViewHolder(TODO())
+            CHIP_VAL -> ChipViewHolder(FilterChipViewTypeBinding.inflate(layoutInflater, parent, false))
+            SLIDER_VAL -> SliderViewHolder(FilterSliderViewTypeBinding.inflate(layoutInflater, parent, false))
+            SWITCH_VAL -> SwitchViewHolder(FilterSwitchViewTypeBinding.inflate(layoutInflater, parent, false))
+            TEXTFIELD_VAL -> TextFieldViewHolder(FilterTextFieldViewTypeBinding.inflate(layoutInflater, parent, false))
             else -> {throw IllegalStateException("Unrecognized view type.")}
         }
     }
