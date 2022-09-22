@@ -99,11 +99,11 @@ class FilterFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     companion object {
         private val DiffCallback = object : DiffUtil.ItemCallback<FilterViewType>() {
             override fun areItemsTheSame(oldItem: FilterViewType, newItem: FilterViewType): Boolean {
-                TODO()
+                return oldItem.title == newItem.title
             }
 
             override fun areContentsTheSame(oldItem: FilterViewType, newItem: FilterViewType): Boolean {
-                TODO()
+                return oldItem.title == newItem.title
             }
         }
         const val CHIP_VAL = 0
