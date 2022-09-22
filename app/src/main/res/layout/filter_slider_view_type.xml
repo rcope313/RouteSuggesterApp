@@ -28,6 +28,7 @@
             tools:text="Route Length" />
 
         <com.google.android.material.slider.RangeSlider
+            android:id="@+id/rangeSlider"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_marginTop="@string/filter_name_margin_top"
