@@ -30,6 +30,7 @@
             tools:text="Standard Routes Only" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchMaterial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
