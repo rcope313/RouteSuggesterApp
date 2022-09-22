@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.routesuggesterapp.data.network.RoutesSearchCriteria
 import com.example.routesuggesterapp.databinding.FilterChipViewTypeBinding
 import com.example.routesuggesterapp.databinding.FilterSliderViewTypeBinding
 import com.example.routesuggesterapp.databinding.FilterSwitchViewTypeBinding
@@ -16,7 +17,7 @@ import com.example.routesuggesterapp.ui.adapter.models.SwitchViewType
 import com.example.routesuggesterapp.ui.adapter.models.TextFieldViewType
 import com.example.routesuggesterapp.ui.adapter.models.ViewType
 
-class FilterFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class FilterFragmentAdapter(val builder: RoutesSearchCriteria.Builder) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val dataSet: List<FilterViewType> = TODO()
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -58,8 +59,23 @@ class FilterFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         fun bind(chipViewType: ChipViewType) {
             binding.apply {
                 binding.chipViewType = chipViewType
-                //binding.executePendingBindings()
+                low.setOnCheckedChangeListener { chip, isChecked ->
+                    TODO()
+                }
+                moderate.setOnCheckedChangeListener { chip, isChecked ->
+                    TODO()
+                }
+                considerable.setOnCheckedChangeListener { chip, isChecked ->
+                    TODO()
+                }
+                high.setOnCheckedChangeListener { chip, isChecked ->
+                    TODO()
+                }
+                extreme.setOnCheckedChangeListener { chip, isChecked ->
+                    TODO()
+                }
             }
+
         }
     }
 
