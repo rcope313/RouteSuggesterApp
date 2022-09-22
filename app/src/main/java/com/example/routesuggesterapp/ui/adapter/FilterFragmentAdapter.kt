@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.routesuggesterapp.databinding.FilterChipViewTypeBinding
 import com.example.routesuggesterapp.databinding.FilterSliderViewTypeBinding
+import com.example.routesuggesterapp.databinding.FilterSwitchViewTypeBinding
 import com.example.routesuggesterapp.databinding.FragmentRouteListBinding
 import com.example.routesuggesterapp.ui.adapter.models.ChipViewType
 import com.example.routesuggesterapp.ui.adapter.models.FilterViewType
@@ -71,12 +72,13 @@ class FilterFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
     }
 
-    class SwitchViewHolder(private var binding: FragmentRouteListBinding) :
+    class SwitchViewHolder(private var binding: FilterSwitchViewTypeBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(switchViewType: SwitchViewType) {
             binding.apply {
-                TODO()
+                binding.switchViewType = switchViewType
+                //binding.executePendingsBindings()
             }
         }
     }
