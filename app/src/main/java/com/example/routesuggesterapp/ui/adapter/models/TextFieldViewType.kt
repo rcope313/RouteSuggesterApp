@@ -4,5 +4,5 @@ class TextFieldViewType(
     override val title: String,
     val editTextFieldHint: String
     ) : FilterViewType() {
-    override val viewType = ViewType.TEXTFIELD
+    override val viewType = ViewType.TEXT_FIELD
 }
