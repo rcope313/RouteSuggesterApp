@@ -6,8 +6,8 @@
 
     <data>
         <variable
-            name="sliderViewType"
-            type="com.example.routesuggesterapp.ui.adapter.models.SliderViewType" />
+            name="textFieldViewType"
+            type="com.example.routesuggesterapp.ui.adapter.models.TextFieldViewType" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,7 +20,7 @@
             android:id="@+id/filterName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{sliderViewType.title}"
+            android:text="@{textFieldViewType.title}"
             android:textAppearance="?attr/textAppearanceHeadline6"
             android:layout_marginTop="@string/filter_margin_top"
             app:layout_constraintTop_toTopOf="parent"
@@ -37,7 +37,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:endIconMode="clear_text"
-            android:hint="@{sliderViewType.title}"
+            android:hint="@{textFieldViewType.title}"
             tools:hint="Mountain Name"/>
 
         <com.google.android.material.textfield.TextInputEditText
@@ -48,7 +48,7 @@
             app:layout_constraintTop_toTopOf="@id/filterName"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:hint="hey"
+            android:hint="@{textFieldViewType.editTextFieldHint}"
             tools:hint="Long's Peak" />
 
 
