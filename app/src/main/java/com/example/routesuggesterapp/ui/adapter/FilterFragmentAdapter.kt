@@ -17,10 +17,10 @@ import com.example.routesuggesterapp.ui.adapter.models.TextFieldViewType
 import com.example.routesuggesterapp.ui.adapter.models.ViewType
 
 class FilterFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private val mDiffer: AsyncListDiffer<FilterViewType> = AsyncListDiffer(this, DiffCallback);
+    private val dataSet: List<FilterViewType> = TODO()
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val filterViewType = mDiffer.currentList[position]
+        val filterViewType = dataSet[position]
         when (filterViewType.viewType) {
             ViewType.CHIP -> (holder as ChipViewHolder).bind(filterViewType as ChipViewType)
             ViewType.SLIDER -> (holder as SliderViewHolder).bind(filterViewType as SliderViewType)
@@ -41,7 +41,7 @@ class FilterFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun getItemViewType(position: Int): Int {
-        return when (mDiffer.currentList[position].viewType) {
+        return when (dataSet[position].viewType) {
             ViewType.CHIP -> CHIP_VAL
             ViewType.SLIDER -> SLIDER_VAL
             ViewType.SWITCH -> SWITCH_VAL
@@ -50,7 +50,7 @@ class FilterFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun getItemCount() =
-        mDiffer.currentList.size
+        dataSet.size
 
     class ChipViewHolder(private var binding: FilterChipViewTypeBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -97,15 +97,6 @@ class FilterFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     companion object {
-        private val DiffCallback = object : DiffUtil.ItemCallback<FilterViewType>() {
-            override fun areItemsTheSame(oldItem: FilterViewType, newItem: FilterViewType): Boolean {
-                return oldItem.title == newItem.title
-            }
-
-            override fun areContentsTheSame(oldItem: FilterViewType, newItem: FilterViewType): Boolean {
-                return oldItem.title == newItem.title
-            }
-        }
         const val CHIP_VAL = 0
         const val SLIDER_VAL = 1
         const val SWITCH_VAL = 2
