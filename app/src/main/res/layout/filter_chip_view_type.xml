@@ -20,12 +20,12 @@
             android:id="@+id/filterName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
+            android:text="@{chipViewType.title}"
             android:textAppearance="?attr/textAppearanceHeadline6"
             android:layout_marginTop="@string/filter_margin_top"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="Filter Name" />
+            tools:text="Exposure" />
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/chipGroup"
