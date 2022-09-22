@@ -41,6 +41,7 @@
             tools:hint="Mountain Name"/>
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textFieldInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@string/filter_name_margin_top"
