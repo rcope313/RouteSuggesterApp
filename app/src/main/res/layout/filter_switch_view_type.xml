@@ -37,7 +37,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginTop="@string/filter_margin_top"
             android:layout_marginBottom="@string/filter_margin_bottom"
-            android:checked="true" />
+            android:checked="@{switchViewType.checked}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
