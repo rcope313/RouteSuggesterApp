@@ -4,6 +4,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.routesuggesterapp.databinding.FilterChipViewTypeBinding
 import com.example.routesuggesterapp.databinding.FragmentRouteListBinding
 import com.example.routesuggesterapp.ui.adapter.models.ChipViewType
 import com.example.routesuggesterapp.ui.adapter.models.FilterViewType
@@ -47,12 +48,13 @@ class FilterFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun getItemCount() =
         mDiffer.currentList.size
 
-    class ChipViewHolder(private var binding: FragmentRouteListBinding) :
+    class ChipViewHolder(private var binding: FilterChipViewTypeBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(chipViewType: ChipViewType) {
             binding.apply {
-                TODO()
+                binding.chipViewType = chipViewType
+                //binding.executePendingBindings()
             }
         }
     }
