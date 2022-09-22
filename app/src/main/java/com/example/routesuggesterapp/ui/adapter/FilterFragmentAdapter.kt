@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.routesuggesterapp.databinding.FilterChipViewTypeBinding
+import com.example.routesuggesterapp.databinding.FilterSliderViewTypeBinding
 import com.example.routesuggesterapp.databinding.FragmentRouteListBinding
 import com.example.routesuggesterapp.ui.adapter.models.ChipViewType
 import com.example.routesuggesterapp.ui.adapter.models.FilterViewType
@@ -59,12 +60,13 @@ class FilterFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
     }
 
-    class SliderViewHolder(private var binding: FragmentRouteListBinding) :
+    class SliderViewHolder(private var binding: FilterSliderViewTypeBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(sliderViewType: SliderViewType) {
             binding.apply {
-                TODO()
+                binding.sliderViewType = sliderViewType
+                //binding.executePendingsBindings()
             }
         }
     }
