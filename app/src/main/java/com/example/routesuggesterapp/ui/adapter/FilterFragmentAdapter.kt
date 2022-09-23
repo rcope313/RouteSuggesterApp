@@ -2,8 +2,8 @@ package com.example.routesuggesterapp.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.routesuggesterapp.data.network.RoutesSearchCriteria
 import com.example.routesuggesterapp.databinding.FilterChipViewTypeBinding
@@ -17,7 +17,8 @@ import com.example.routesuggesterapp.ui.adapter.models.SwitchViewType
 import com.example.routesuggesterapp.ui.adapter.models.TextFieldViewType
 import com.example.routesuggesterapp.ui.adapter.models.ViewType
 
-class FilterFragmentAdapter(val builder: RoutesSearchCriteria.Builder) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class FilterFragmentAdapter(val builder: RoutesSearchCriteria.Builder)
+    : ListAdapter<FilterViewType, RecyclerView.ViewHolder>(DiffCallback) {
     private val dataSet: List<FilterViewType> = TODO()
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -119,6 +120,15 @@ class FilterFragmentAdapter(val builder: RoutesSearchCriteria.Builder) : Recycle
     }
 
     companion object {
+        private val DiffCallback = object : DiffUtil.ItemCallback<FilterViewType>() {
+            override fun areItemsTheSame(oldItem: FilterViewType, newItem: FilterViewType): Boolean {
+                TODO()
+            }
+
+            override fun areContentsTheSame(oldItem: FilterViewType, newItem: FilterViewType): Boolean {
+                TODO()
+            }
+        }
         const val CHIP_VAL = 0
         const val SLIDER_VAL = 1
         const val SWITCH_VAL = 2
