@@ -99,7 +99,9 @@ class FilterFragmentAdapter(val builder: RoutesSearchCriteria.Builder) : Recycle
         fun bind(switchViewType: SwitchViewType) {
             binding.apply {
                 binding.switchViewType = switchViewType
-                //binding.executePendingsBindings()
+                switchMaterial.setOnCheckedChangeListener { switch, isChecked ->
+                    TODO()
+                }
             }
         }
     }
@@ -110,7 +112,8 @@ class FilterFragmentAdapter(val builder: RoutesSearchCriteria.Builder) : Recycle
         fun bind(textFieldViewType: TextFieldViewType) {
             binding.apply {
                 binding.textFieldViewType = textFieldViewType
-                //binding.executePendingsBindings()
+                val inputText = filledTextField.editText?.text.toString()
+                TODO()
             }
         }
     }
