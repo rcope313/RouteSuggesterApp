@@ -12,6 +12,7 @@ import com.example.routesuggesterapp.databinding.FilterSwitchViewTypeBinding
 import com.example.routesuggesterapp.databinding.FilterTextFieldViewTypeBinding
 import com.example.routesuggesterapp.ui.adapter.models.ChipViewType
 import com.example.routesuggesterapp.ui.adapter.models.FilterViewType
+import com.example.routesuggesterapp.ui.adapter.models.FilterViewTypeList
 import com.example.routesuggesterapp.ui.adapter.models.SliderViewType
 import com.example.routesuggesterapp.ui.adapter.models.SwitchViewType
 import com.example.routesuggesterapp.ui.adapter.models.TextFieldViewType
@@ -19,7 +20,7 @@ import com.example.routesuggesterapp.ui.adapter.models.ViewType
 
 class FilterFragmentAdapter(val builder: RoutesSearchCriteria.Builder)
     : ListAdapter<FilterViewType, RecyclerView.ViewHolder>(DiffCallback) {
-    private val dataSet: List<FilterViewType> = TODO()
+    lateinit var dataSet: List<FilterViewType>
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val filterViewType = dataSet[position]

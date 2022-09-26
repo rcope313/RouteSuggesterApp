@@ -11,6 +11,7 @@ import com.example.routesuggesterapp.R
 import com.example.routesuggesterapp.data.network.RoutesSearchCriteria
 import com.example.routesuggesterapp.databinding.FragmentFilterBinding
 import com.example.routesuggesterapp.ui.adapter.FilterFragmentAdapter
+import com.example.routesuggesterapp.ui.adapter.models.FilterViewTypeList
 import com.example.routesuggesterapp.ui.viewmodel.ResponsiveRouteViewModel
 import com.google.android.material.divider.MaterialDividerItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,6 +28,7 @@ class FilterFragment : Fragment() {
     ): View? {
         binding = FragmentFilterBinding.inflate(inflater, container, false)
         val adapter = FilterFragmentAdapter(RoutesSearchCriteria.Builder())
+        adapter.dataSet = FilterViewTypeList.list
 
         binding.apply {
             recyclerView.adapter = adapter
