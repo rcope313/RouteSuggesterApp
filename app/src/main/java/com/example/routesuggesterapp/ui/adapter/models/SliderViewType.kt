@@ -4,7 +4,7 @@ class SliderViewType(
     override val title: String,
     val valueFrom: Int,
     val valueTo: Int,
-    val initialSliderValues: List<Int>) : FilterViewType() {
+    val initialSliderValues: MutableList<Float>) : FilterViewType() {
     override val viewType = ViewType.SLIDER
 
     init {
