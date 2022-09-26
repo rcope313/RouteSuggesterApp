@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.routesuggesterapp.databinding.FilterChipViewTypeBinding
 import com.example.routesuggesterapp.databinding.FilterSliderViewTypeBinding
 import com.example.routesuggesterapp.databinding.FilterSwitchViewTypeBinding
-import com.example.routesuggesterapp.databinding.FragmentRouteListBinding
+import com.example.routesuggesterapp.databinding.FilterTextFieldViewTypeBinding
 import com.example.routesuggesterapp.ui.adapter.models.ChipViewType
 import com.example.routesuggesterapp.ui.adapter.models.FilterViewType
 import com.example.routesuggesterapp.ui.adapter.models.SliderViewType
@@ -24,7 +24,7 @@ class FilterFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             ViewType.CHIP -> (holder as ChipViewHolder).bind(filterViewType as ChipViewType)
             ViewType.SLIDER -> (holder as SliderViewHolder).bind(filterViewType as SliderViewType)
             ViewType.SWITCH -> (holder as ChipViewHolder).bind(filterViewType as ChipViewType)
-            ViewType.TEXTFIELD -> (holder as TextFieldViewHolder).bind(filterViewType as TextFieldViewType)
+            ViewType.TEXT_FIELD -> (holder as TextFieldViewHolder).bind(filterViewType as TextFieldViewType)
         }
     }
 
@@ -43,7 +43,7 @@ class FilterFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             ViewType.CHIP -> CHIP_VAL
             ViewType.SLIDER -> SLIDER_VAL
             ViewType.SWITCH -> SWITCH_VAL
-            ViewType.TEXTFIELD -> TEXTFIELD_VAL
+            ViewType.TEXT_FIELD -> TEXTFIELD_VAL
         }
     }
 
@@ -83,12 +83,13 @@ class FilterFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
     }
 
-    class TextFieldViewHolder(private var binding: FragmentRouteListBinding) :
+    class TextFieldViewHolder(private var binding: FilterTextFieldViewTypeBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(textViewType: TextFieldViewType) {
+        fun bind(textFieldViewType: TextFieldViewType) {
             binding.apply {
-                TODO()
+                binding.textFieldViewType = textFieldViewType
+                //binding.executePendingsBindings()
             }
         }
     }
