@@ -1,20 +1,20 @@
 package com.example.routesuggesterapp.data.network
 
-data class RoutesSearchCriteria constructor (
-    private val routeName: String?,
-    private val mountainName: String?,
-    private val sStandardRoute: Boolean?,
-    private val isSnowRoute: Boolean?,
-    private val grade: Int?,
-    private val trailhead: String?,
-    private val summitElevation: Int?,
-    private val gain: Int?,
-    private val length: Int?,
-    private val exposure: String?,
-    private val rockfallPotential: String?,
-    private val routeFinding: String?,
-    private val commitment: String?,
-    private val roadDifficulty: Int?) {
+data class RoutesSearchCriteria private constructor (
+    val routeName: String?,
+    val mountainName: String?,
+    val isStandardRoute: Boolean?,
+    val isSnowRoute: Boolean?,
+    val grade: Int?,
+    val trailhead: String?,
+    val summitElevation: Int?,
+    val gain: Int?,
+    val length: Int?,
+    val exposure: String?,
+    val rockfallPotential: String?,
+    val routeFinding: String?,
+    val commitment: String?,
+    val roadDifficulty: Int?) {
 
     data class Builder(
         private var routeName: String? = null,
