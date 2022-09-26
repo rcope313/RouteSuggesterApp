@@ -1,39 +1,41 @@
 package com.example.routesuggesterapp.data.network
 
-class RoutesSearchCriteria private constructor (
-    val routeName: String?,
-    val mountainName: String?,
-    val sStandardRoute: Boolean?,
-    val isSnowRoute: Boolean?,
-    val grade: Int?,
-    val trailhead: String?,
-    val summitElevation: Int?,
-    val gain: Int?,
-    val length: Int?,
-    val exposure: String?,
-    val rockfallPotential: String?,
-    val routeFinding: String?,
-    val commitment: String?,
-    val roadDifficulty: Int?) {
+data class RoutesSearchCriteria constructor (
+    private val routeName: String?,
+    private val mountainName: String?,
+    private val sStandardRoute: Boolean?,
+    private val isSnowRoute: Boolean?,
+    private val grade: Int?,
+    private val trailhead: String?,
+    private val summitElevation: Int?,
+    private val gain: Int?,
+    private val length: Int?,
+    private val exposure: String?,
+    private val rockfallPotential: String?,
+    private val routeFinding: String?,
+    private val commitment: String?,
+    private val roadDifficulty: Int?) {
 
     data class Builder(
-        var routeName: String? = null,
-        var mountainName: String? = null,
-        var isStandardRoute: Boolean? = null,
-        var isSnowRoute: Boolean? = null,
-        var grade: Int? = null,
-        var trailhead: String? = null,
-        var summitElevation: Int? = null,
-        var gain: Int? = null,
-        var length: Int? = null,
-        var exposure: String? = null,
-        var rockfallPotential: String? = null,
-        var routeFinding: String? = null,
-        var commitment: String? = null,
-        var roadDifficulty: Int? = null
+        private var routeName: String? = null,
+        private var mountainName: String? = null,
+        private var isStandardRoute: Boolean? = null,
+        private var isSnowRoute: Boolean? = null,
+        private var grade: Int? = null,
+        private var trailhead: String? = null,
+        private var summitElevation: Int? = null,
+        private var gain: Int? = null,
+        private var length: Int? = null,
+        private var exposure: String? = null,
+        private var rockfallPotential: String? = null,
+        private var routeFinding: String? = null,
+        private var commitment: String? = null,
+        private var roadDifficulty: Int? = null
     ) {
 
-        fun routeName(routeName: String) = apply { this.routeName = routeName }
+        fun routeName(routeName: String) = apply {
+            this.routeName = routeName
+        }
 
         fun mountainName(mountainName: String) = apply { this.mountainName = mountainName }
 
