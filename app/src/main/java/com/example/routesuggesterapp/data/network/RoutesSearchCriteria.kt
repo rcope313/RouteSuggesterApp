@@ -10,10 +10,10 @@ data class RoutesSearchCriteria private constructor (
     val summitElevation: Pair<Int,Int>?,
     val gain: Pair<Int,Int>?,
     val length: Pair<Double,Double>?,
-    val exposure: String?,
-    val rockfallPotential: String?,
-    val routeFinding: String?,
-    val commitment: String?,
+    val exposure: List<String>?,
+    val rockfallPotential: List<String>?,
+    val routeFinding: List<String>?,
+    val commitment: List<String>?,
     val roadDifficulty: Pair<Int,Int>?) {
 
     data class Builder(
@@ -26,10 +26,10 @@ data class RoutesSearchCriteria private constructor (
         private var summitElevation: Pair<Int,Int>? = null,
         private var gain: Pair<Int,Int>? = null,
         private var length: Pair<Double,Double>? = null,
-        private var exposure: String? = null,
-        private var rockfallPotential: String? = null,
-        private var routeFinding: String? = null,
-        private var commitment: String? = null,
+        private var exposure: List<String>? = null,
+        private var rockfallPotential: List<String>? = null,
+        private var routeFinding: List<String>? = null,
+        private var commitment: List<String>? = null,
         private var roadDifficulty: Pair<Int,Int>? = null
     ) {
 
@@ -51,13 +51,13 @@ data class RoutesSearchCriteria private constructor (
 
         fun length(length: Pair<Double,Double>) = apply { this.length = length }
 
-        fun exposure(exposure: String) = apply { this.exposure = exposure }
+        fun exposure(exposure: List<String>) = apply { this.exposure = exposure }
 
-        fun rockfallPotential(rockfallPotential: String) = apply { this.rockfallPotential = rockfallPotential }
+        fun rockfallPotential(rockfallPotential: List<String>) = apply { this.rockfallPotential = rockfallPotential }
 
-        fun routeFinding(routeFinding: String) = apply { this.routeFinding = routeFinding}
+        fun routeFinding(routeFinding: List<String>) = apply { this.routeFinding = routeFinding}
 
-        fun commitment(commitment: String) = apply { this.commitment = commitment }
+        fun commitment(commitment: List<String>) = apply { this.commitment = commitment }
 
         fun roadDifficulty(roadDifficulty: Pair<Int,Int>) = apply { this.roadDifficulty = roadDifficulty}
 
