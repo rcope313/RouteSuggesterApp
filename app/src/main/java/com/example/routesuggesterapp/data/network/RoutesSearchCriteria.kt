@@ -5,37 +5,35 @@ data class RoutesSearchCriteria private constructor (
     val mountainName: String?,
     val isStandardRoute: Boolean?,
     val isSnowRoute: Boolean?,
-    val grade: Int?,
+    val grade: Pair<Int,Int>?,
     val trailhead: String?,
-    val summitElevation: Int?,
-    val gain: Int?,
-    val length: Int?,
+    val summitElevation: Pair<Int,Int>?,
+    val gain: Pair<Int,Int>?,
+    val length: Pair<Double,Double>?,
     val exposure: String?,
     val rockfallPotential: String?,
     val routeFinding: String?,
     val commitment: String?,
-    val roadDifficulty: Int?) {
+    val roadDifficulty: Pair<Int,Int>?) {
 
     data class Builder(
         private var routeName: String? = null,
         private var mountainName: String? = null,
         private var isStandardRoute: Boolean? = null,
         private var isSnowRoute: Boolean? = null,
-        private var grade: Int? = null,
+        private var grade: Pair<Int,Int>? = null,
         private var trailhead: String? = null,
-        private var summitElevation: Int? = null,
-        private var gain: Int? = null,
-        private var length: Int? = null,
+        private var summitElevation: Pair<Int,Int>? = null,
+        private var gain: Pair<Int,Int>? = null,
+        private var length: Pair<Double,Double>? = null,
         private var exposure: String? = null,
         private var rockfallPotential: String? = null,
         private var routeFinding: String? = null,
         private var commitment: String? = null,
-        private var roadDifficulty: Int? = null
+        private var roadDifficulty: Pair<Int,Int>? = null
     ) {
 
-        fun routeName(routeName: String) = apply {
-            this.routeName = routeName
-        }
+        fun routeName(routeName: String) = apply { this.routeName = routeName }
 
         fun mountainName(mountainName: String) = apply { this.mountainName = mountainName }
 
@@ -43,15 +41,15 @@ data class RoutesSearchCriteria private constructor (
 
         fun isSnowRoute(isSnowRoute: Boolean) = apply { this.isSnowRoute = isSnowRoute }
 
-        fun grade(grade: Int) = apply { this.grade = grade }
+        fun grade(grade: Pair<Int,Int>) = apply { this.grade = grade }
 
         fun trailhead(trailhead: String) = apply { this.trailhead = trailhead }
 
-        fun summitElevation(summitElevation: Int) = apply { this.summitElevation = summitElevation }
+        fun summitElevation(summitElevation: Pair<Int,Int>) = apply { this.summitElevation = summitElevation }
 
-        fun gain(gain: Int) = apply { this.gain = gain }
+        fun gain(gain: Pair<Int,Int>) = apply { this.gain = gain }
 
-        fun length(length: Int) = apply { this.length = length }
+        fun length(length: Pair<Double,Double>) = apply { this.length = length }
 
         fun exposure(exposure: String) = apply { this.exposure = exposure }
 
@@ -61,7 +59,7 @@ data class RoutesSearchCriteria private constructor (
 
         fun commitment(commitment: String) = apply { this.commitment = commitment }
 
-        fun roadDifficulty(roadDifficulty: Int) = apply { this.roadDifficulty = roadDifficulty}
+        fun roadDifficulty(roadDifficulty: Pair<Int,Int>) = apply { this.roadDifficulty = roadDifficulty}
 
         fun build() = RoutesSearchCriteria(routeName, mountainName, isStandardRoute, isSnowRoute, grade, trailhead, summitElevation, gain, length, exposure, rockfallPotential, routeFinding, commitment, roadDifficulty)
     }
