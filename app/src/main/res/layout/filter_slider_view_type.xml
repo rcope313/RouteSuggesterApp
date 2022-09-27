@@ -39,7 +39,6 @@
             app:values="@{sliderViewType.initialSliderValues}"
             android:valueFrom="@{sliderViewType.valueFrom}"
             android:valueTo="@{sliderViewType.valueTo}"
-            android:value="@{sliderViewType.initialSliderValues"
              />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
