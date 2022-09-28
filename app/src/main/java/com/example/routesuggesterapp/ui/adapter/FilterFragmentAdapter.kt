@@ -2,6 +2,7 @@ package com.example.routesuggesterapp.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.CompoundButton
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -55,13 +56,14 @@ class FilterFragmentAdapter(val builder: RoutesSearchCriteria.Builder)
     override fun getItemCount() =
         dataSet.size
 
-    class ChipViewHolder(private var binding: FilterChipViewTypeBinding) :
+    inner class ChipViewHolder(private var binding: FilterChipViewTypeBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(chipViewType: ChipViewType) {
+            val chipList = mutableListOf<String>()
             binding.apply {
                 binding.chipViewType = chipViewType
-                low.setOnCheckedChangeListener { chip, isChecked ->
+                low.setOnCheckedChangeListener{ chip, isChecked ->
                     TODO()
                 }
                 moderate.setOnCheckedChangeListener { chip, isChecked ->
@@ -77,19 +79,17 @@ class FilterFragmentAdapter(val builder: RoutesSearchCriteria.Builder)
                     TODO()
                 }
             }
-
         }
     }
 
-    class SliderViewHolder(private var binding: FilterSliderViewTypeBinding) :
+    inner class SliderViewHolder(private var binding: FilterSliderViewTypeBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(sliderViewType: SliderViewType) {
             binding.apply {
                 binding.sliderViewType = sliderViewType
-                rangeSlider.addOnChangeListener { slider, value, fromUser ->
-                    val values = rangeSlider.values
-                    TODO()
+                rangeSlider.addOnChangeListener { slider, _, _ ->
+                    builder.length(Pair(slider.values[0].toDouble(), slider.values[1].toDouble()))
                 }
             }
         }
