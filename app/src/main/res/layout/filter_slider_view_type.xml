@@ -20,7 +20,7 @@
             android:id="@+id/filterName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{sliderViewType.title}"
+            android:text="@{sliderViewType.title.toString()}"
             android:textAppearance="?attr/textAppearanceHeadline6"
             android:layout_marginTop="@string/filter_margin_top"
             app:layout_constraintTop_toTopOf="parent"

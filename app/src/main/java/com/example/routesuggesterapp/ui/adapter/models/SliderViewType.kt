@@ -1,7 +1,9 @@
 package com.example.routesuggesterapp.ui.adapter.models
 
+import com.example.routesuggesterapp.data.network.Criteria
+
 class SliderViewType(
-    override val title: String,
+    override val title: Criteria,
     val valueFrom: Int,
     val valueTo: Int,
     val initialSliderValues: List<Int>) : FilterViewType() {
