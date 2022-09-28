@@ -15,18 +15,18 @@ class RoutesSearchCriteriaTest {
 
     @Test
     fun itCreatesAnImmutableRoutesSearchCriteria() {
-        builder.exposure("high")
+        builder.exposure(listOf("high"))
         val criteria1 = builder.build()
-        builder.exposure("high")
+        builder.exposure(listOf("high"))
         val criteria2 = builder.build()
         assertNotSame(criteria1, criteria2)
     }
 
     @Test
     fun itCanUpdateBuilderClassFieldWithMultipleGetFunctionCalls() {
-        builder.exposure("high")
-        builder.exposure("low")
+        builder.exposure(listOf("high"))
+        builder.exposure(listOf("low"))
         val criteria = builder.build()
-        assertEquals(criteria.exposure, "low")
+        assertEquals(criteria.exposure, listOf("low"))
     }
 }
