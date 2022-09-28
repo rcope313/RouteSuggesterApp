@@ -108,14 +108,14 @@ class FilterFragmentAdapter(val builder: RoutesSearchCriteria.Builder)
         }
     }
 
-    class TextFieldViewHolder(private var binding: FilterTextFieldViewTypeBinding) :
+    inner class TextFieldViewHolder(private var binding: FilterTextFieldViewTypeBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(textFieldViewType: TextFieldViewType) {
             binding.apply {
                 binding.textFieldViewType = textFieldViewType
                 val inputText = filledTextField.editText?.text.toString()
-                TODO()
+                builder.routeName(inputText)
             }
         }
     }
