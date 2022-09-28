@@ -95,14 +95,14 @@ class FilterFragmentAdapter(val builder: RoutesSearchCriteria.Builder)
         }
     }
 
-    class SwitchViewHolder(private var binding: FilterSwitchViewTypeBinding) :
+    inner class SwitchViewHolder(private var binding: FilterSwitchViewTypeBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(switchViewType: SwitchViewType) {
             binding.apply {
                 binding.switchViewType = switchViewType
                 switchMaterial.setOnCheckedChangeListener { switch, isChecked ->
-                    TODO()
+                    if (isChecked) builder.isSnowRoute(true) else builder.isSnowRoute(false)
                 }
             }
         }
