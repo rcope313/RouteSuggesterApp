@@ -3,6 +3,7 @@ package com.example.routesuggesterapp.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.CompoundButton
+import androidx.core.view.forEach
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -18,6 +19,7 @@ import com.example.routesuggesterapp.ui.adapter.models.SliderViewType
 import com.example.routesuggesterapp.ui.adapter.models.SwitchViewType
 import com.example.routesuggesterapp.ui.adapter.models.TextFieldViewType
 import com.example.routesuggesterapp.ui.adapter.models.ViewType
+import com.google.android.material.chip.Chip
 
 class FilterFragmentAdapter(val builder: RoutesSearchCriteria.Builder)
     : ListAdapter<FilterViewType, RecyclerView.ViewHolder>(DiffCallback) {
@@ -28,7 +30,7 @@ class FilterFragmentAdapter(val builder: RoutesSearchCriteria.Builder)
         when (filterViewType.viewType) {
             ViewType.CHIP -> (holder as ChipViewHolder).bind(filterViewType as ChipViewType)
             ViewType.SLIDER -> (holder as SliderViewHolder).bind(filterViewType as SliderViewType)
-            ViewType.SWITCH -> (holder as ChipViewHolder).bind(filterViewType as ChipViewType)
+            ViewType.SWITCH -> (holder as SwitchViewHolder).bind(filterViewType as SwitchViewType)
             ViewType.TEXT_FIELD -> (holder as TextFieldViewHolder).bind(filterViewType as TextFieldViewType)
         }
     }
@@ -63,21 +65,19 @@ class FilterFragmentAdapter(val builder: RoutesSearchCriteria.Builder)
             val chipList = mutableListOf<String>()
             binding.apply {
                 binding.chipViewType = chipViewType
-                low.setOnCheckedChangeListener{ chip, isChecked ->
-                    TODO()
-                }
-                moderate.setOnCheckedChangeListener { chip, isChecked ->
-                    TODO()
-                }
-                considerable.setOnCheckedChangeListener { chip, isChecked ->
-                    TODO()
-                }
-                high.setOnCheckedChangeListener { chip, isChecked ->
-                    TODO()
-                }
-                extreme.setOnCheckedChangeListener { chip, isChecked ->
-                    TODO()
-                }
+                low.setOnCheckedChangeListener(ChipListener(chipList))
+                moderate.setOnCheckedChangeListener(ChipListener(chipList))
+                considerable.setOnCheckedChangeListener(ChipListener(chipList))
+                high.setOnCheckedChangeListener(ChipListener(chipList))
+                extreme.setOnCheckedChangeListener(ChipListener(chipList))
+            }
+        }
+
+        inner class ChipListener(val chipList: MutableList<String>) : CompoundButton.OnCheckedChangeListener {
+            override fun onCheckedChanged(chip: CompoundButton?, isChecked: Boolean) {
+                val chipTitle = chip?.text.toString()
+                if (isChecked) chipList.add(chipTitle) else chipList.remove(chipTitle)
+                builder.exposure(chipList)
             }
         }
     }
