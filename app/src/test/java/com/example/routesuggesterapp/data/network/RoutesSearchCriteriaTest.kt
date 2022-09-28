@@ -4,6 +4,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotSame
 import org.junit.Before
 import org.junit.Test
+import java.lang.IllegalStateException
 
 class RoutesSearchCriteriaTest {
     private lateinit var builder: RoutesSearchCriteria.Builder
@@ -15,18 +16,39 @@ class RoutesSearchCriteriaTest {
 
     @Test
     fun itCreatesAnImmutableRoutesSearchCriteria() {
-        builder.exposure(listOf("high"))
+        builder.applyCriteriaByChip(Criteria.EXPOSURE, listOf("high"))
         val criteria1 = builder.build()
-        builder.exposure(listOf("high"))
+        builder.applyCriteriaByChip(Criteria.EXPOSURE, listOf("high"))
         val criteria2 = builder.build()
         assertNotSame(criteria1, criteria2)
     }
 
     @Test
     fun itCanUpdateBuilderClassFieldWithMultipleGetFunctionCalls() {
-        builder.exposure(listOf("high"))
-        builder.exposure(listOf("low"))
+        builder.applyCriteriaByChip(Criteria.EXPOSURE, listOf("high"))
+        builder.applyCriteriaByChip(Criteria.EXPOSURE, listOf("high", "low"))
         val criteria = builder.build()
-        assertEquals(criteria.exposure, listOf("low"))
+        assertEquals(criteria.exposure, listOf("high", "low"))
+    }
+
+    @Test(expected = IllegalStateException::class)
+    fun itThrowsIllegalStateExceptionWhenProvidedWrongCriteriaByChip() {
+        builder.applyCriteriaByChip(Criteria.ROUTE_NAME, listOf("low"))
+    }
+
+    @Test(expected = IllegalStateException::class)
+    fun itThrowsIllegalStateExceptionWhenProvidedWrongCriteriaBySlider() {
+        java.lang.Float(100.0)
+        builder.applyCriteriaBySlider(Criteria.ROUTE_NAME, mutableListOf(1f, 2f))
+    }
+
+    @Test(expected = IllegalStateException::class)
+    fun itThrowsIllegalStateExceptionWhenProvidedWrongCriteriaBySwitch() {
+        builder.applyCriteriaBySwitch(Criteria.ROUTE_NAME, false)
+    }
+
+    @Test(expected = IllegalStateException::class)
+    fun itThrowsIllegalStateExceptionWhenProvidedWrongCriteriaByTextField() {
+        builder.applyCriteriaByTextField(Criteria.EXPOSURE, "Long's Peak")
     }
 }

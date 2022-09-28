@@ -46,8 +46,8 @@ data class RoutesSearchCriteria private constructor (
         }
 
         fun applyCriteriaBySlider(criteria: Criteria, values: MutableList<Float>) {
-            val valuesAsIntPair = Pair(values[0].toInt(), values[0].toInt())
-            val valuesAsDoublePair = Pair(values[0].toDouble(), values[0].toDouble())
+            val valuesAsIntPair = Pair(values[0].toInt(), values[1].toInt())
+            val valuesAsDoublePair = Pair(values[0].toDouble(), values[1].toDouble())
             apply {
                 when (criteria) {
                     Criteria.GRADE -> grade = valuesAsIntPair
