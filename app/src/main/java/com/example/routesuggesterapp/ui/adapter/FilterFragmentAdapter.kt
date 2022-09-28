@@ -55,9 +55,6 @@ class FilterFragmentAdapter(val builder: RoutesSearchCriteria.Builder)
         }
     }
 
-    override fun getItemCount() =
-        dataSet.size
-
     inner class ChipViewHolder(private var binding: FilterChipViewTypeBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -123,11 +120,11 @@ class FilterFragmentAdapter(val builder: RoutesSearchCriteria.Builder)
     companion object {
         private val DiffCallback = object : DiffUtil.ItemCallback<FilterViewType>() {
             override fun areItemsTheSame(oldItem: FilterViewType, newItem: FilterViewType): Boolean {
-                TODO()
+                return oldItem == newItem
             }
 
             override fun areContentsTheSame(oldItem: FilterViewType, newItem: FilterViewType): Boolean {
-                TODO()
+                return oldItem.title == newItem.title
             }
         }
         const val CHIP_VAL = 0
