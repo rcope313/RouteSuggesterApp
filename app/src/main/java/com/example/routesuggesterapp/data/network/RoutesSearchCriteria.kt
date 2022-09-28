@@ -21,46 +21,82 @@ data class RoutesSearchCriteria private constructor (
         private var mountainName: String? = null,
         private var isStandardRoute: Boolean? = null,
         private var isSnowRoute: Boolean? = null,
-        private var grade: Pair<Int,Int>? = null,
+        private var grade: Pair<Int, Int>? = null,
         private var trailhead: String? = null,
-        private var summitElevation: Pair<Int,Int>? = null,
-        private var gain: Pair<Int,Int>? = null,
-        private var length: Pair<Double,Double>? = null,
+        private var summitElevation: Pair<Int, Int>? = null,
+        private var gain: Pair<Int, Int>? = null,
+        private var length: Pair<Double, Double>? = null,
         private var exposure: List<String>? = null,
         private var rockfallPotential: List<String>? = null,
         private var routeFinding: List<String>? = null,
         private var commitment: List<String>? = null,
-        private var roadDifficulty: Pair<Int,Int>? = null
+        private var roadDifficulty: Pair<Int, Int>? = null
     ) {
 
-        fun routeName(routeName: String) = apply { this.routeName = routeName }
+        fun applyCriteriaByChip(criteria: Criteria, checkedChips: List<String>) {
+            apply {
+                when (criteria) {
+                    Criteria.EXPOSURE -> exposure = checkedChips
+                    Criteria.ROCKFALL_POTENTIAL -> rockfallPotential = checkedChips
+                    Criteria.ROUTE_FINDING -> routeFinding = checkedChips
+                    Criteria.COMMITMENT -> commitment = checkedChips
+                    else -> throw IllegalStateException("Not an instance of a chip view type")
+                }
+            }
+        }
 
-        fun mountainName(mountainName: String) = apply { this.mountainName = mountainName }
+        fun applyCriteriaBySlider(criteria: Criteria, values: MutableList<Float>) {
+            val valuesAsIntPair = Pair(values[0].toInt(), values[0].toInt())
+            val valuesAsDoublePair = Pair(values[0].toDouble(), values[0].toDouble())
+            apply {
+                when (criteria) {
+                    Criteria.GRADE -> grade = valuesAsIntPair
+                    Criteria.SUMMIT_ELEVATION -> summitElevation = valuesAsIntPair
+                    Criteria.GAIN -> gain = valuesAsIntPair
+                    Criteria.LENGTH -> length = valuesAsDoublePair
+                    Criteria.ROAD_DIFFICULTY -> roadDifficulty = valuesAsIntPair
+                    else -> throw IllegalStateException("Not an instance of a slider view type")
+                }
+            }
+        }
 
-        fun isStandardRoute(isStandardRoute: Boolean) = apply { this.isStandardRoute = isStandardRoute }
+        fun applyCriteriaBySwitch(criteria: Criteria, isChecked: Boolean) {
+            apply {
+                when (criteria) {
+                    Criteria.IS_STANDARD_ROUTE -> isStandardRoute = isChecked
+                    Criteria.IS_SNOW_ROUTE -> isSnowRoute = isChecked
+                    else -> throw IllegalStateException("Not an instance of a switch view type")
+                }
+            }
+        }
 
-        fun isSnowRoute(isSnowRoute: Boolean) = apply { this.isSnowRoute = isSnowRoute }
+        fun applyCriteriaByTextField(criteria: Criteria, text: String) {
+            apply {
+                when (criteria) {
+                    Criteria.ROUTE_NAME -> routeName = text
+                    Criteria.MOUNTAIN_NAME -> mountainName = text
+                    Criteria.TRAILHEAD -> trailhead = text
+                    else -> throw IllegalStateException("Not an instance of a text field view type")
+                }
+            }
+        }
 
-        fun grade(grade: Pair<Int,Int>) = apply { this.grade = grade }
-
-        fun trailhead(trailhead: String) = apply { this.trailhead = trailhead }
-
-        fun summitElevation(summitElevation: Pair<Int,Int>) = apply { this.summitElevation = summitElevation }
-
-        fun gain(gain: Pair<Int,Int>) = apply { this.gain = gain }
-
-        fun length(length: Pair<Double,Double>) = apply { this.length = length }
-
-        fun exposure(exposure: List<String>) = apply { this.exposure = exposure }
-
-        fun rockfallPotential(rockfallPotential: List<String>) = apply { this.rockfallPotential = rockfallPotential }
-
-        fun routeFinding(routeFinding: List<String>) = apply { this.routeFinding = routeFinding}
-
-        fun commitment(commitment: List<String>) = apply { this.commitment = commitment }
-
-        fun roadDifficulty(roadDifficulty: Pair<Int,Int>) = apply { this.roadDifficulty = roadDifficulty}
-
-        fun build() = RoutesSearchCriteria(routeName, mountainName, isStandardRoute, isSnowRoute, grade, trailhead, summitElevation, gain, length, exposure, rockfallPotential, routeFinding, commitment, roadDifficulty)
+        fun build() = RoutesSearchCriteria(
+            routeName,
+            mountainName,
+            isStandardRoute,
+            isSnowRoute,
+            grade,
+            trailhead,
+            summitElevation,
+            gain,
+            length,
+            exposure,
+            rockfallPotential,
+            routeFinding,
+            commitment,
+            roadDifficulty
+        )
     }
 }
+
