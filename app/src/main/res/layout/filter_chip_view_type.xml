@@ -20,7 +20,7 @@
             android:id="@+id/filterName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{chipViewType.title}"
+            android:text="@{chipViewType.title.toString()}"
             android:textAppearance="?attr/textAppearanceHeadline6"
             android:layout_marginTop="@string/filter_margin_top"
             app:layout_constraintTop_toTopOf="parent"
