@@ -14,6 +14,7 @@ fun RangeSlider.setRangeSliderValues(sliderViewType: SliderViewType) {
     values = sliderViewType.initialSliderValues.map { it.toFloat() }
     valueFrom = sliderViewType.valueFrom.toFloat()
     valueTo = sliderViewType.valueTo.toFloat()
+    stepSize = sliderViewType.stepSize
 }
 
 @BindingAdapter("submitData")

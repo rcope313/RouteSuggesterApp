@@ -6,7 +6,9 @@ class SliderViewType(
     override val title: Criteria,
     val valueFrom: Int,
     val valueTo: Int,
-    val initialSliderValues: List<Int>) : FilterViewType() {
+    val initialSliderValues: List<Int>,
+    val stepSize: Float
+    ) : FilterViewType() {
     override val viewType = ViewType.SLIDER
 
     init {
