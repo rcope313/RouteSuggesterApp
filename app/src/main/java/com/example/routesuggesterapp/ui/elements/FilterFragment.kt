@@ -32,9 +32,9 @@ class FilterFragment : Fragment() {
         binding = FragmentFilterBinding.inflate(inflater, container, false)
         val adapter = FilterFragmentAdapter(RoutesSearchCriteria.Builder())
         adapter.dataSet = FilterViewTypeList.list
-
         binding.apply {
-            recyclerView.addItemDecoration(MaterialDividerItemDecoration(requireContext(), LinearLayoutManager.HORIZONTAL))
+            val divider = MaterialDividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL)
+            recyclerView.addItemDecoration(divider)
             recyclerView.adapter = adapter
             recyclerView.submitData(FilterViewTypeList)
             Log.i(TAG, "Adapter for recyclerView = ${binding.recyclerView.adapter.toString()}")
