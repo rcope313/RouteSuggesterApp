@@ -22,8 +22,8 @@
             android:layout_height="wrap_content"
             android:text="@{switchViewType.title.toString()}"
             android:textAppearance="?attr/textAppearanceHeadline6"
-            android:layout_marginTop="@string/filter_margin_top"
-            android:layout_marginBottom="@string/filter_margin_bottom"
+            android:layout_marginTop="@dimen/filter_margin_top"
+            android:layout_marginBottom="@dimen/filter_margin_bottom"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -36,8 +36,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginTop="@string/filter_margin_top"
-            android:layout_marginBottom="@string/filter_margin_bottom"
+            android:layout_marginTop="@dimen/filter_margin_top"
+            android:layout_marginBottom="@dimen/filter_margin_bottom"
             android:checked="@{switchViewType.checked}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

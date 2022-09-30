@@ -95,7 +95,7 @@ class FilterFragmentAdapter(val builder: RoutesSearchCriteria.Builder)
             val criteria = sliderViewType.title
             binding.apply {
                 binding.sliderViewType = sliderViewType
-                rangeSlider.updateInitSliderValues(sliderViewType.initialSliderValues)
+                rangeSlider.setRangeSliderValues(sliderViewType)
                 rangeSlider.addOnChangeListener { slider, _, _ ->
                     builder.applyCriteriaBySlider(criteria, slider.values)
                 }

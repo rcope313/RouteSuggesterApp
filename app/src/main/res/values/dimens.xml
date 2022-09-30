@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="filter_margin_top">16dp</dimen>
+
+    <dimen name="filter_margin_bottom">16dp</dimen>
+
+    <dimen name="filter_name_margin_top">32dp</dimen>
+
+</resources>

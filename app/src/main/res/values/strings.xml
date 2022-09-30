@@ -7,7 +7,5 @@
     <string name="high_chip">High</string>
     <string name="extreme_chip">Extreme</string>
 
-    <string name="filter_margin_top">16dp</string>
-    <string name="filter_margin_bottom">16dp</string>
-    <string name="filter_name_margin_top">32dp</string>
+
 </resources>
