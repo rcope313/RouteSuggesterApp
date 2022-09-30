@@ -1,5 +1,6 @@
 package com.example.routesuggesterapp.ui.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.CompoundButton
@@ -19,12 +20,15 @@ import com.example.routesuggesterapp.ui.adapter.models.SwitchViewType
 import com.example.routesuggesterapp.ui.adapter.models.TextFieldViewType
 import com.example.routesuggesterapp.ui.adapter.models.ViewType
 
+private const val TAG = "FilterFragmentAdapter"
+
 class FilterFragmentAdapter(val builder: RoutesSearchCriteria.Builder)
     : ListAdapter<FilterViewType, RecyclerView.ViewHolder>(DiffCallback) {
     lateinit var dataSet: List<FilterViewType>
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val filterViewType = dataSet[position]
+        Log.i(TAG, "Current filterView Type is $filterViewType")
         when (filterViewType.viewType) {
             ViewType.CHIP -> (holder as ChipViewHolder).bind(filterViewType as ChipViewType)
             ViewType.SLIDER -> (holder as SliderViewHolder).bind(filterViewType as SliderViewType)
@@ -35,6 +39,7 @@ class FilterFragmentAdapter(val builder: RoutesSearchCriteria.Builder)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
+        Log.i(TAG, "Layout inflated. viewType is $viewType")
         return when (viewType) {
             CHIP_VAL -> ChipViewHolder(FilterChipViewTypeBinding.inflate(layoutInflater, parent, false))
             SLIDER_VAL -> SliderViewHolder(FilterSliderViewTypeBinding.inflate(layoutInflater, parent, false))
@@ -45,6 +50,7 @@ class FilterFragmentAdapter(val builder: RoutesSearchCriteria.Builder)
     }
 
     override fun getItemViewType(position: Int): Int {
+        Log.i(TAG, "Current position in data set is $position")
         return when (dataSet[position].viewType) {
             ViewType.CHIP -> CHIP_VAL
             ViewType.SLIDER -> SLIDER_VAL
@@ -67,6 +73,7 @@ class FilterFragmentAdapter(val builder: RoutesSearchCriteria.Builder)
                 considerable.setOnCheckedChangeListener(ChipListener(chipList, criteria))
                 high.setOnCheckedChangeListener(ChipListener(chipList, criteria))
                 extreme.setOnCheckedChangeListener(ChipListener(chipList, criteria))
+                Log.i(TAG, "ChipViewHolder bind function called, binding applied")
             }
         }
 
@@ -88,9 +95,11 @@ class FilterFragmentAdapter(val builder: RoutesSearchCriteria.Builder)
             val criteria = sliderViewType.title
             binding.apply {
                 binding.sliderViewType = sliderViewType
+                rangeSlider.updateInitSliderValues(sliderViewType.initialSliderValues)
                 rangeSlider.addOnChangeListener { slider, _, _ ->
                     builder.applyCriteriaBySlider(criteria, slider.values)
                 }
+                Log.i(TAG, "SliderViewHolder bind function called, binding applied")
             }
         }
     }
@@ -105,6 +114,7 @@ class FilterFragmentAdapter(val builder: RoutesSearchCriteria.Builder)
                 switchMaterial.setOnCheckedChangeListener { _, isChecked ->
                     builder.applyCriteriaBySwitch(criteria, isChecked)
                 }
+                Log.i(TAG, "SwitchViewHolder bind function called, binding applied")
             }
         }
     }
@@ -119,6 +129,7 @@ class FilterFragmentAdapter(val builder: RoutesSearchCriteria.Builder)
                 val inputText = filledTextField.editText?.text.toString()
                 builder.applyCriteriaByTextField(criteria, inputText)
             }
+            Log.i(TAG, "TextFieldViewHolder bind function called, binding applied")
         }
     }
 

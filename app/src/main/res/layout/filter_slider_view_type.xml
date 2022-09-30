@@ -36,7 +36,6 @@
             app:layout_constraintTop_toTopOf="@id/filterName"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:values="@{sliderViewType.initialSliderValues}"
             android:valueFrom="@{sliderViewType.valueFrom}"
             android:valueTo="@{sliderViewType.valueTo}"
              />
