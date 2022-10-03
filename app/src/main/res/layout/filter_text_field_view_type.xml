@@ -37,7 +37,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:endIconMode="clear_text"
-            android:hint="@{textFieldViewType.title}"
+            android:hint="@{textFieldViewType.title.toString()}"
             tools:hint="Mountain Name"/>
 
         <com.google.android.material.textfield.TextInputEditText
