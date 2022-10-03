@@ -28,6 +28,7 @@
             tools:text="Mountain Name" />
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:id="@+id/filledTextField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,8 +38,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:endIconMode="clear_text"
+            app:placeholderText="@{textFieldViewType.placeholder}"
             android:hint="@{textFieldViewType.title.toString()}"
-            tools:hint="Mountain Name"/>
+            tools:hint="Mountain Name">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textFieldInput"
@@ -48,10 +50,9 @@
             android:layout_marginBottom="16dp"
             app:layout_constraintTop_toTopOf="@id/filterName"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:hint="@{textFieldViewType.editTextFieldHint}"
-            tools:hint="Long's Peak" />
+            app:layout_constraintBottom_toBottomOf="parent" />
 
+        </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

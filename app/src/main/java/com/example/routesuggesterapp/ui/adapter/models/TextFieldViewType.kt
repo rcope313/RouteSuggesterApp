@@ -4,7 +4,7 @@ import com.example.routesuggesterapp.data.network.Criteria
 
 class TextFieldViewType(
     override val title: Criteria,
-    val editTextFieldHint: String
+    val placeholder: String
     ) : FilterViewType() {
     override val viewType = ViewType.TEXT_FIELD
 }
